@@ -11,14 +11,19 @@ class Car(object):
         nearestRide = None
         for ride in rideList:
             ride.setDistance(abs(self.startPointX - ride.startPositionX) + abs(self.startPointY - ride.startPositionY))
+            if ride.distance > self.stepsElapsed:
+                ride.distance = -1
         for ride in rideList:
-            if(nearestRide == None or nearestRide.distance > ride.distance):
+            if (nearestRide == None or nearestRide.distance > ride.distance) and ride.distance != -1:
                 nearestRide = ride
 
-        self.ridesList.append(nearestRide)
-        self.stepsElapsed = self.stepsElapsed - nearestRide.distance
-        self.startPointX = nearestRide.endPositionX
-        self.startPointY = nearestRide.endPositionY
+        if nearestRide == None:
+            self.stepsElapsed = 0
+        else:
+            self.ridesList.append(nearestRide)
+            self.stepsElapsed = self.stepsElapsed - nearestRide.distance
+            self.startPointX = nearestRide.endPositionX
+            self.startPointY = nearestRide.endPositionY
 
         return nearestRide
 

@@ -18,21 +18,28 @@ def main():
 
     print rideList
 
+    finalCarList = []
 
-    for car in carList:
-
-        for i in range(3):
+    while len(carList) > 0:
+        print '===='
+        for car in carList:
 
             nearestRide = car.findNearestRide(rideList)
-            print 'Car', nearestRide.indexRide
 
             for ride in rideList:
                 if ride.indexRide == nearestRide.indexRide:
                     rideList.remove(ride)
 
-    file = open("c_testfile.txt", "w")
-    for car in carList:
-        file.write(str(len(car.ridesList)) + ' ' + car.getRideText() + '\n')
+            if car.stepsElapsed == 0:
+                carList.remove(car)
+
+
+
+    for car in finalCarList:
+
+        file = open("c_testfile.txt", "w")
+        for car in carList:
+            file.write(str(len(car.ridesList)) + ' ' + car.getRideText() + '\n')
 
 
 if __name__ == '__main__':
