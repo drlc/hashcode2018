@@ -1,8 +1,12 @@
-from Parser import *
-from Pattern import *
+#from Parser import *
+from CarFactory import *
 
 def main():
-   print('Ciao Nico')
+   carFactory = CarFactory(2, 10)
+   carList = carFactory.getCarList()
+
+   print carList
+
 
 
 
