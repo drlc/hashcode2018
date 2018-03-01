@@ -5,7 +5,7 @@ from CarFactory import *
 def main():
 
     parser = Parser()
-    numVehicles, numSteps, listString = parser.readFile("./inputs/a_example.in")
+    numVehicles, numSteps, listString = parser.readFile("./inputs/e_high_bonus.in")
 
     carFactory = CarFactory(numVehicles, numSteps)
     carList = carFactory.getCarList()
@@ -19,14 +19,16 @@ def main():
 
 
     for car in carList:
-        nearestRide = carList[0].findNearestRide(rideList)
+        nearestRide = car.findNearestRide(rideList)
         print 'Car', nearestRide.indexRide
 
         for ride in rideList:
             if ride.indexRide == nearestRide.indexRide:
                 rideList.remove(ride)
 
-        
+    file = open("e_testfile.txt", "w")
+    for car in carList:
+        file.write(str(len(car.ridesList)) + ' ' + car.getRideText() + '\n')
 
 
 if __name__ == '__main__':

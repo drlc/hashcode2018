@@ -9,5 +9,5 @@ class CarFactory(object):
 
     def getCarList(self):
         for i in range(0, self.numCar):
-            self.carList.append(Car(self.stepsElapsed))
+            self.carList.append(Car(self.stepsElapsed, i))
         return self.carList

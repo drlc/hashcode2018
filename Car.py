@@ -1,10 +1,11 @@
 class Car(object):
 
-    def __init__(self, stepsElapsed):
+    def __init__(self, stepsElapsed, index):
         self.startPointX = 0
         self.startPointY = 0
         self.ridesList = []
         self.stepsElapsed = stepsElapsed
+        self.index = index
 
     def findNearestRide(self, rideList):
         nearestRide = None
@@ -21,6 +22,11 @@ class Car(object):
 
         return nearestRide
 
+    def getRideText(self):
+        text = ''
+        for ride in self.ridesList:
+            text += str(ride.indexRide)
+        return text
 
 
     #def __str__(self):
