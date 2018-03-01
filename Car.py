@@ -25,7 +25,9 @@ class Car(object):
     def getRideText(self):
         text = ''
         for ride in self.ridesList:
-            text += str(ride.indexRide)
+            print self.index, ride.indexRide
+
+            text += str(ride.indexRide) + ' '
         return text
 
 
